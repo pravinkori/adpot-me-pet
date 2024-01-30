@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Pet from "./Pet";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
@@ -6,10 +7,31 @@ const SearchParams = () => {
     const [location, setLocation] = useState("Seattle, WA");
     const [animal, setAnimal] = useState("");
     const [breed, setBreed] = useState("");
+    const [pets, setPets] = useState([]);
     const breeds = [];
+
+    useEffect(() => {
+        requestPets();
+    }, []);
+
+    async function requestPets() {
+        const res = await fetch(
+            `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+        );
+        const json = await res.json();
+
+        setPets(json.pets);
+    }
+
     return (
         <div className="search-params">
-            <form>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    requestPets();
+                }}
+            >
+                {/* Location input */}
                 <label htmlFor="location">
                     Location
                     <input
@@ -19,6 +41,8 @@ const SearchParams = () => {
                         placeholder="Enter location"
                     />
                 </label>
+
+                {/* Animal select dropdown */}
                 <label htmlFor="animal">
                     Animal
                     <select
@@ -37,6 +61,8 @@ const SearchParams = () => {
                         ))}
                     </select>
                 </label>
+
+                {/* Breed select dropdown */}
                 <label htmlFor="breed">
                     Breed
                     <select
@@ -56,6 +82,15 @@ const SearchParams = () => {
 
                 <button>Submit</button>
             </form>
+
+            {pets.map((pet) => (
+                <Pet
+                    name={pet.name}
+                    animal={pet.animal}
+                    breed={pet.breed}
+                    key={pet.id}
+                />
+            ))}
         </div>
     );
 };
