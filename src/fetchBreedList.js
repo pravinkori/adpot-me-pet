@@ -7,18 +7,18 @@ async function fetchBreedList({ queryKey }) {
     if (!animal) return [];
 
     // Fetch data from the API based on the provided animal
-    const res = await fetch(
+    const apiResponse = await fetch(
         `http://pets-v2.dev-apis.com/breeds?animal=${animal}`
     );
 
     // Check if the response from the API is not ok
-    if (!res.ok) {
+    if (!apiResponse.ok) {
         // If the response is not ok, throw an error
         throw new Error(`breeds ${animal} fetch not ok`);
     }
 
     // Parse the JSON response and return it
-    return res.json();
+    return apiResponse.json();
 }
 
 export default fetchBreedList;
