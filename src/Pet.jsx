@@ -9,12 +9,16 @@ const Pet = ({ name, animal, breed, images, location, id }) => {
 
     return (
         <div>
+            {/* Link to the details page for the pet */}
             <Link to={`/details/${id}`} className="pet">
                 <div className="image-container">
+                    {/* Display the hero image */}
                     <img src={hero} alt={name} />
                 </div>
                 <div className="info">
+                    {/* Display the pet's name */}
                     <h1>{name}</h1>
+                    {/* Display the pet's information */}
                     <h2>{`${animal} — ${breed} — ${location}`}</h2>
                 </div>
             </Link>
