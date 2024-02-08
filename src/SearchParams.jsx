@@ -16,21 +16,16 @@ const SearchParams = () => {
     const [breeds] = useBreedList(animal);
 
     const results = useQuery(["search", requestParams], fetchSearch);
+
+    if (results.isLoading) {
+        return (
+            <div className="loading-pane">
+                <h2 className="loader">🌀</h2>
+            </div>
+        );
+    }
+
     const pets = results?.data?.pets ?? [];
-
-    // useEffect(() => {
-    //     requestPets();
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
-
-    // async function requestPets() {
-    //     const res = await fetch(
-    //         `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
-    //     );
-    //     const json = await res.json();
-
-    //     setPets(json.pets);
-    // }
 
     return (
         <div className="search-params">
