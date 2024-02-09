@@ -6,6 +6,7 @@ import AdoptedPetContext from "../AdoptedPetContext";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
 
+// Create a new instance of QueryClient with default options
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
@@ -17,14 +18,18 @@ const queryClient = new QueryClient({
 
 // App component definition
 const App = () => {
+    // State to manage the adopted pet
     const adoptedPet = useState(null);
 
     return (
         // Wrapping the entire application with BrowserRouter to enable routing
         <BrowserRouter>
+            {/* Provide the QueryClient instance to the entire application */}
             <QueryClientProvider client={queryClient}>
+                {/* Provide the adopted pet state to the entire application */}
                 <AdoptedPetContext.Provider value={adoptedPet}>
                     <div>
+                        {/* Header with a link to the home page */}
                         <header>
                             <Link to={"/"}>Adopt Me!</Link>
                         </header>

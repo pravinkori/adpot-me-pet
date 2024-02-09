@@ -7,13 +7,17 @@ import fetchPet from "../fetchPet";
 import Carousel from "./Carousel";
 import Modal from "./Modal";
 
+// Details component to display detailed information about a pet
 const Details = () => {
     // State to manage the visibility of the modal
     const [showModal, setShowModal] = useState(false);
+    // Hook to navigate to different routes
     const navigate = useNavigate();
 
+    // Context to manage adopted pet state
     // eslint-disable-next-line no-unused-vars
     const [_, setAdoptedPet] = useContext(AdoptedPetContext);
+    // Retrieve the id parameter from the URL
     const { id } = useParams();
 
     // Using useQuery hook to fetch data from the API using fetchPet function
@@ -54,7 +58,9 @@ const Details = () => {
                                 {/* Button to confirm adoption */}
                                 <button
                                     onClick={() => {
+                                        // Set the adopted pet in context
                                         setAdoptedPet(pet);
+                                        // Navigate back to the home page
                                         navigate("/");
                                     }}
                                 >
