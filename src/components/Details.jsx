@@ -36,9 +36,13 @@ const Details = () => {
     );
 };
 
+// Define a function component called DetailsErrorBoundary
 function DetailsErrorBoundary(props) {
+    // Render the ErrorBoundary component
     return (
+        // Wrap the Details component with the ErrorBoundary component
         <ErrorBoundary>
+            {/* Pass all props to the Details component */}
             <Details {...props} />
         </ErrorBoundary>
     );
