@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import ErrorBoundary from "./ErrorBoundary";
-import fetchPet from "./fetchPet";
+import fetchPet from "../fetchPet";
 import Carousel from "./Carousel";
 
 const Details = () => {

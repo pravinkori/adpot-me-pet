@@ -1,6 +1,6 @@
 // import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import fetchBreedList from "./fetchBreedList";
+import fetchBreedList from "../fetchBreedList";
 
 // Custom hook to fetch a list of pet breeds based on the provided animal
 export default function useBreedList(animal) {
