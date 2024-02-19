@@ -37,11 +37,9 @@ To get a local copy up and running follow these simple steps:
     npm run dev
     ```
 5.  **Open your browser and visit:**
-
-            ```bash
-            http://localhost:5173/
-            ```
-
+     ```bash
+    http://localhost:5173/
+    ```
     <br>
 
     ![visual setup flow](./src/assets/setup-flow.png)
